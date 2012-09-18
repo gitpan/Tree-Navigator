@@ -30,8 +30,11 @@ requires:
   List::MoreUtils: 0
   List::Util: 0
   Moose: 0
+  MooseX::NonMoose: 0
+  MooseX::Params::Validate: 0
   Params::Validate: 0
   Plack: 0
+  Plack::Component: 0
   Plack::MIME: 0
   Plack::Request: 0
   Plack::Util: 0
