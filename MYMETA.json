@@ -33,7 +33,27 @@
          }
       },
       "runtime" : {
-         "requires" : {}
+         "requires" : {
+            "Alien::GvaScript" : 0,
+            "DBI" : 0,
+            "DBIx::DataModel" : 0,
+            "Devel::StackTrace::AsHTML" : 0,
+            "Devel::StackTrace::WithLexicals" : 0,
+            "Devel::Symdump" : 0,
+            "HTTP::Date" : 0,
+            "List::MoreUtils" : 0,
+            "List::Util" : 0,
+            "Moose" : 0,
+            "Params::Validate" : 0,
+            "Plack" : 0,
+            "Plack::MIME" : 0,
+            "Plack::Request" : 0,
+            "Plack::Util" : 0,
+            "Scalar::Util" : 0,
+            "Template" : 0,
+            "URI::Escape" : 0,
+            "namespace::autoclean" : 0
+         }
       }
    },
    "release_status" : "stable",
@@ -42,5 +62,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "0.01"
+   "version" : "0.02"
 }

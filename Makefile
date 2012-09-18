@@ -19,8 +19,8 @@
 #     LICENSE => q[perl]
 #     NAME => q[Tree::Navigator]
 #     NO_META => q[1]
-#     PREREQ_PM => { Test::More=>q[0], ExtUtils::MakeMaker=>q[6.36] }
-#     VERSION => q[0.01]
+#     PREREQ_PM => { Scalar::Util=>q[0], URI::Escape=>q[0], List::Util=>q[0], Plack::Request=>q[0], List::MoreUtils=>q[0], Moose=>q[0], DBI=>q[0], Devel::StackTrace::WithLexicals=>q[0], namespace::autoclean=>q[0], DBIx::DataModel=>q[0], Plack=>q[0], Plack::MIME=>q[0], ExtUtils::MakeMaker=>q[6.36], Template=>q[0], Devel::Symdump=>q[0], Alien::GvaScript=>q[0], HTTP::Date=>q[0], Test::More=>q[0], Plack::Util=>q[0], Params::Validate=>q[0], Devel::StackTrace::AsHTML=>q[0] }
+#     VERSION => q[0.02]
 #     VERSION_FROM => q[lib/Tree/Navigator.pm]
 #     dist => { PREOP=>q[$(PERL) -I. "-MModule::Install::Admin" -e "dist_preop(q($(DISTVNAME)))"] }
 #     realclean => { FILES=>q[MYMETA.yml] }
@@ -67,11 +67,11 @@ DIRFILESEP = \\
 DFSEP = $(DIRFILESEP)
 NAME = Tree::Navigator
 NAME_SYM = Tree_Navigator
-VERSION = 0.01
+VERSION = 0.02
 VERSION_MACRO = VERSION
-VERSION_SYM = 0_01
+VERSION_SYM = 0_02
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = 0.01
+XS_VERSION = 0.02
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib\arch
@@ -296,7 +296,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = Tree-Navigator
-DISTVNAME = Tree-Navigator-0.01
+DISTVNAME = Tree-Navigator-0.02
 
 
 # --- MakeMaker macro section:
@@ -809,10 +809,29 @@ testdb_static :: testdb_dynamic
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
-	$(NOECHO) $(ECHO) "<SOFTPKG NAME=\"$(DISTNAME)\" VERSION=\"0.01\">" > $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) "<SOFTPKG NAME=\"$(DISTNAME)\" VERSION=\"0.02\">" > $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) "    <ABSTRACT>Generic navigation in various kinds of trees</ABSTRACT>" >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) "    <AUTHOR>Laurent Dami, C&lt;&lt; &lt;dami at cpan.org&gt; &gt;&gt;, Laurent Dami &lt;dami@cpan.org&gt;</AUTHOR>" >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) "    <IMPLEMENTATION>" >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) "        <REQUIRE NAME=\"Alien::GvaScript\" />" >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) "        <REQUIRE NAME=\"DBI::\" />" >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) "        <REQUIRE NAME=\"DBIx::DataModel\" />" >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) "        <REQUIRE NAME=\"Devel::StackTrace::AsHTML\" />" >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) "        <REQUIRE NAME=\"Devel::StackTrace::WithLexicals\" />" >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) "        <REQUIRE NAME=\"Devel::Symdump\" />" >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) "        <REQUIRE NAME=\"HTTP::Date\" />" >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) "        <REQUIRE NAME=\"List::MoreUtils\" />" >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) "        <REQUIRE NAME=\"List::Util\" />" >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) "        <REQUIRE NAME=\"Moose::\" />" >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) "        <REQUIRE NAME=\"Params::Validate\" />" >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) "        <REQUIRE NAME=\"Plack::\" />" >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) "        <REQUIRE NAME=\"Plack::MIME\" />" >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) "        <REQUIRE NAME=\"Plack::Request\" />" >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) "        <REQUIRE NAME=\"Plack::Util\" />" >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) "        <REQUIRE NAME=\"Scalar::Util\" />" >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) "        <REQUIRE NAME=\"Template::\" />" >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) "        <REQUIRE NAME=\"URI::Escape\" />" >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) "        <REQUIRE NAME=\"namespace::autoclean\" />" >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) "        <ARCHITECTURE NAME=\"MSWin32-x86-multi-thread-5.12\" />" >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) "        <CODEBASE HREF=\"\" />" >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) "    </IMPLEMENTATION>" >> $(DISTNAME).ppd
@@ -880,14 +899,14 @@ installdeps_notest ::
 	$(NOECHO) $(NOOP)
 
 upgradedeps ::
-	$(PERL) Makefile.PL --config= --upgradedeps=Test::More,0
+	$(PERL) Makefile.PL --config= --upgradedeps=Test::More,0,namespace::autoclean,0,Alien::GvaScript,0,DBI,0,DBIx::DataModel,0,Devel::StackTrace::WithLexicals,0,Devel::StackTrace::AsHTML,0,Devel::Symdump,0,HTTP::Date,0,List::MoreUtils,0,List::Util,0,Moose,0,Params::Validate,0,Plack,0,Plack::MIME,0,Plack::Request,0,Plack::Util,0,Scalar::Util,0,Template,0,URI::Escape,0
 
 upgradedeps_notest ::
-	$(PERL) Makefile.PL --config=notest,1 --upgradedeps=Test::More,0
+	$(PERL) Makefile.PL --config=notest,1 --upgradedeps=Test::More,0,namespace::autoclean,0,Alien::GvaScript,0,DBI,0,DBIx::DataModel,0,Devel::StackTrace::WithLexicals,0,Devel::StackTrace::AsHTML,0,Devel::Symdump,0,HTTP::Date,0,List::MoreUtils,0,List::Util,0,Moose,0,Params::Validate,0,Plack,0,Plack::MIME,0,Plack::Request,0,Plack::Util,0,Scalar::Util,0,Template,0,URI::Escape,0
 
 listdeps ::
 	@$(PERL) -le "print for @ARGV" 
 
 listalldeps ::
-	@$(PERL) -le "print for @ARGV" Test::More
+	@$(PERL) -le "print for @ARGV" Test::More namespace::autoclean Alien::GvaScript DBI DBIx::DataModel Devel::StackTrace::WithLexicals Devel::StackTrace::AsHTML Devel::Symdump HTTP::Date List::MoreUtils List::Util Moose Params::Validate Plack Plack::MIME Plack::Request Plack::Util Scalar::Util Template URI::Escape
 
