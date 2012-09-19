@@ -41,6 +41,7 @@
             "Devel::StackTrace::WithLexicals" : 0,
             "Devel::Symdump" : 0,
             "HTTP::Date" : 0,
+            "HTTP::Server::PSGI::Mortal" : 0,
             "List::MoreUtils" : 0,
             "List::Util" : 0,
             "Moose" : 0,
@@ -65,5 +66,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "0.02"
+   "version" : "0.03"
 }
