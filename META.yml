@@ -28,14 +28,13 @@ requires:
   Devel::StackTrace::WithLexicals: 0
   Devel::Symdump: 0
   HTTP::Date: 0
-  HTTP::Server::PSGI::Mortal: 0
   List::MoreUtils: 0
   List::Util: 0
   Moose: 0
   MooseX::NonMoose: 0
   MooseX::Params::Validate: 0
   Params::Validate: 0
-  Plack: 0
+  Plack: 1.0004
   Plack::Component: 0
   Plack::MIME: 0
   Plack::Request: 0
@@ -46,4 +45,4 @@ requires:
   namespace::autoclean: 0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.04
+version: 0.05
